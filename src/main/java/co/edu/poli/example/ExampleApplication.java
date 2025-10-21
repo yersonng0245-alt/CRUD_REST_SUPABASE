@@ -9,10 +9,19 @@ import io.github.cdimascio.dotenv.Dotenv;
 public class ExampleApplication {
 
 	public static void main(String[] args) {	
-		Dotenv dotenv = Dotenv.configure().load();
-        System.setProperty("DB_USER_SUPABASE", dotenv.get("DB_USER_SUPABASE"));
-        System.setProperty("DB_PWD_SUPABASE", dotenv.get("DB_PWD_SUPABASE"));	
+		System.out.println("Directorio actual: " + System.getProperty("user.dir"));
+
+		Dotenv dotenv = Dotenv.configure()
+				.directory("./")
+				.load();
+
+		String user = dotenv.get("DB_USER_SUPABASE");
+		String pwd = dotenv.get("DB_PWD_SUPABASE");
+
+		System.out.println("🧾 DB_USER_SUPABASE: " + user);
+		System.out.println("🧾 DB_PWD_SUPABASE: " + pwd);
+
 		SpringApplication.run(ExampleApplication.class, args);
 	}
-
+	
 }

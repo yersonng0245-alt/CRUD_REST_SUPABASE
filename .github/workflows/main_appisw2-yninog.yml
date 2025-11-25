@@ -15,6 +15,12 @@ jobs:
     permissions:
       contents: read #This is required for actions/checkout
 
+
+    env:
+      DB_USER_SUPABASE: ${{ secrets.DB_USER_SUPABASE }}
+      DB_PWD_SUPABASE: ${{ secrets.DB_PWD_SUPABASE }}
+
+
     steps:
       - uses: actions/checkout@v4
 
@@ -60,4 +66,5 @@ jobs:
           app-name: 'appISW2-yninog'
           slot-name: 'Production'
           package: '*.jar'
+
           
